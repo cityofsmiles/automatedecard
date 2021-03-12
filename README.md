@@ -7,4 +7,4 @@ These are simple Python scripts for producing high school report cards.
 
 ## Usage
 1. Edit the information and grades in the ecard-infos.xlsx file.
-2. If you want to produce cards for the first grading period, launch the ecardFirst2021.py script. 
+2. If you want to produce cards for the first grading period, launch the ecardFirst2021.py script. For the second grading period, launch the ecardSecond2021.py script.
