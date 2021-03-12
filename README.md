@@ -15,4 +15,4 @@ If PIP responds, then PIP is installed. Otherwise, there will be an error saying
 1. Edit the information and grades in the *ecard-infos.xlsx* file.
 2. If you want to produce cards for the first grading period, run the *ecardFirst2021.py* script. For the second grading period, run the *ecardSecond2021.py* script. Follow [this tutorial](https://techendo.com/post/how-to-run-a-python-script.html) to learn how to run python scripts on Windows.
 
-Note: During the first run, the script will install various python packages so it may take several minutes to one hour depending on your internet connection. Please be patient.
+Note: During the first run, the script will install various Python packages so it may take several minutes to one hour depending on your internet connection. Please be patient.
