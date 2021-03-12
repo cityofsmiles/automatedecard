@@ -10,7 +10,7 @@ packages = ['openpyxl', 'pandas', 'xlsx2csv']
 for package_name in packages:
     spec = importlib.util.find_spec(package_name)
     if spec is None:
-        print("Installing python packages. Please wait.")
+        print("Installing python packages. Please wait...")
         subprocess.check_call([sys.executable, '-m', 'pip', 'install', package_name]) 
 
  
@@ -28,6 +28,14 @@ infosSheets = ["Infos-Card-Male", "Infos-Card-Female", "1st-Summary-Male", "1st-
 sheetsCard = ["infosMale", "infosFemale", "firstGradesMale", "firstGradesFemale"]
 firstGradesDFIndex = [2, 3]
 dfList = []
+
+# always keep same length
+selectedEndCol = [12, 21]
+pasteStartRow = [2, 2]
+templateSheets = ["Infos", "Grades"]
+pasteSheet = ["infoSheet", "gradeSheet"]
+addSheetNum = [0, 2]
+
 
 
 def readSheets(infosExcel, tempPath, infosSheets, dfList, sheetsCard):
@@ -54,7 +62,7 @@ def readSheets(infosExcel, tempPath, infosSheets, dfList, sheetsCard):
 
 
 
-def createCard():
+def createCard(pathCards, sheetsCard, dfList, cardTemplate, selectedEndCol, pasteStartRow, templateSheets, pasteSheet, addSheetNum):
     os.makedirs(pathCards, exist_ok=True)
     for i in range(0, 2):
         for k in range(0, len(dfList[i])):
@@ -63,13 +71,15 @@ def createCard():
             fileName = studentCode + "-" + studentName + ".xlsx"
             print("Creating file:", fileName)
             template = openpyxl.load_workbook(cardTemplate) 
-            infoSheet = template["Infos"]
-            gradeSheet = template["Grades"]
+   
+            for h in range(0, len(templateSheets)):
+                pasteSheet[h] = template[templateSheets[h]]
             studentRow = k + 2
-            selectedInfoRow = copyRange(1, studentRow, 11, studentRow, sheetsCard[i]) 
-            pasteInfoRow = pasteRange(1, 2, 11, 2, infoSheet, selectedInfoRow)
-            selectedFirstGradeRow = copyRange(1, studentRow, 21, studentRow, sheetsCard[firstGradesDFIndex[i]]) 
-            pasteFirstGradeRow = pasteRange(1, 2, 21, 2, gradeSheet, selectedFirstGradeRow)
+
+            for j in range(0, len(pasteStartRow)):
+                selectedRow = copyRange(1, studentRow, selectedEndCol[j], studentRow, sheetsCard[i + addSheetNum[j]]) 
+                pasteRow = pasteRange(1, pasteStartRow[j], selectedEndCol[j], pasteStartRow[j], pasteSheet[j], selectedRow)
+
             template.save(os.path.join(pathCards,fileName))
     
 
@@ -100,5 +110,5 @@ def pasteRange(startCol, startRow, endCol, endRow, sheetReceiving, copiedData):
 
 if __name__ == '__main__':
     readSheets(infosExcel, tempPath, infosSheets, dfList, sheetsCard)
-    createCard()
+    createCard(pathCards, sheetsCard, dfList, cardTemplate, selectedEndCol, pasteStartRow, templateSheets, pasteSheet, addSheetNum)
     print("Done!")
