@@ -7,6 +7,7 @@ These are simple Python scripts for producing high school report cards.
 Python is not recognized as an internal or external command, operable program or batch file.
 ```
 For Windows users, click [here](https://www.python.org/downloads/windows/) to install the correct version for your PC.
+
 2. Check whether pip is installed in your system. Type in the following command at the command prompt: 
 ```
 pip help

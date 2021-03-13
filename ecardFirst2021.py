@@ -1,33 +1,26 @@
 #!/usr/bin/python  
 
-
 import sys
 import subprocess
 import importlib.util
 
-
-packages = ['openpyxl', 'pandas', 'xlsx2csv']
+packages = ['openpyxl']
 for package_name in packages:
     spec = importlib.util.find_spec(package_name)
     if spec is None:
         print("Installing python packages. Please wait...")
         subprocess.check_call([sys.executable, '-m', 'pip', 'install', package_name]) 
 
- 
 import openpyxl
-import pandas as pd
 import os
-import shutil
 
 
 pathCards = "1st-grading-cards"
-tempPath = "temp"
+#tempPath = "temp"
 infosExcel = "ecard-infos.xlsx"
 cardTemplate = "ecard-template.xlsx"
 infosSheets = ["Infos-Card-Male", "Infos-Card-Female", "1st-Summary-Male", "1st-Summary-Female"]
 sheetsCard = ["infosMale", "infosFemale", "firstGradesMale", "firstGradesFemale"]
-firstGradesDFIndex = [2, 3]
-dfList = []
 
 # always keep same length
 selectedEndCol = [12, 21]
@@ -37,45 +30,30 @@ pasteSheet = ["infoSheet", "gradeSheet"]
 addSheetNum = [0, 2]
 
 
-
-def readSheets(infosExcel, tempPath, infosSheets, dfList, sheetsCard):
+def loadSheets(infosExcel, infosSheets, sheetsCard):
     print("Loading", infosExcel)
-    os.makedirs(tempPath, exist_ok=True)
+    wb = openpyxl.load_workbook(infosExcel, data_only=True)
     for i in range(0, len(infosSheets)):
-        csvName = infosSheets[i] + ".csv"
-        xlName = infosSheets[i] + ".xlsx"
-        sheetNum = str(i + 2)
-        subprocess.run(['xlsx2csv', infosExcel, csvName, '-s', sheetNum], shell=False, capture_output=True)
-        dfList.insert(i, "df" + str(i))
-        dfList[i] = pd.read_csv(csvName)
-        dfList[i] = dfList[i].dropna(axis=0, how='any', thresh=5, subset=None, inplace=False)
-        writer = pd.ExcelWriter(os.path.join(tempPath, xlName))
-        dfList[i].to_excel(writer, infosSheets[i])
-        writer.save()
-        wb = openpyxl.load_workbook(os.path.join(tempPath, xlName))
         sheetsCard[i] = wb[infosSheets[i]]
-        os.remove(csvName)
-    shutil.rmtree(tempPath)
-
     return sheetsCard
-    return dfList
 
 
-
-def createCard(pathCards, sheetsCard, dfList, cardTemplate, selectedEndCol, pasteStartRow, templateSheets, pasteSheet, addSheetNum):
+def makeCard(pathCards, sheetsCard, cardTemplate, selectedEndCol, pasteStartRow, templateSheets, pasteSheet, addSheetNum):
     os.makedirs(pathCards, exist_ok=True)
     for i in range(0, 2):
-        for k in range(0, len(dfList[i])):
-            studentName = dfList[i].iloc[k,1]
-            studentCode = dfList[i].iloc[k,0]
+        for k in range(0, sheetsCard[i].max_row):
+            studentRow = k + 2
+            studentName = sheetsCard[i].cell(row=studentRow, column=2).value
+            if not studentName:
+                continue
+            studentCode = sheetsCard[i].cell(row=studentRow, column=1).value
             fileName = studentCode + "-" + studentName + ".xlsx"
             print("Creating file:", fileName)
             template = openpyxl.load_workbook(cardTemplate) 
    
             for h in range(0, len(templateSheets)):
                 pasteSheet[h] = template[templateSheets[h]]
-            studentRow = k + 2
-
+            
             for j in range(0, len(pasteStartRow)):
                 selectedRow = copyRange(1, studentRow, selectedEndCol[j], studentRow, sheetsCard[i + addSheetNum[j]]) 
                 pasteRow = pasteRange(1, pasteStartRow[j], selectedEndCol[j], pasteStartRow[j], pasteSheet[j], selectedRow)
@@ -109,6 +87,6 @@ def pasteRange(startCol, startRow, endCol, endRow, sheetReceiving, copiedData):
 
 
 if __name__ == '__main__':
-    readSheets(infosExcel, tempPath, infosSheets, dfList, sheetsCard)
-    createCard(pathCards, sheetsCard, dfList, cardTemplate, selectedEndCol, pasteStartRow, templateSheets, pasteSheet, addSheetNum)
+    loadSheets(infosExcel, infosSheets, sheetsCard)
+    makeCard(pathCards, sheetsCard, cardTemplate, selectedEndCol, pasteStartRow, templateSheets, pasteSheet, addSheetNum)
     print("Done!")
