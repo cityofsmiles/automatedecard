@@ -2,7 +2,9 @@
 These are simple Python scripts for producing high school report cards.
 
 ## Installation
-1. Make sure that Python 3 is installed in your system. The simplest way to test for a Python installation on your Windows PC is to open a command prompt. Once a command prompt window opens, type `python` and press Enter. Python is not installed if you receive a message like
+1. In Windows 10, launch the Microsoft Store and install Python. As of this writing, the available version is Python 3.7.
+
+Make sure that Python 3 is installed in your system. The simplest way to test for a Python installation on your Windows PC is to open a command prompt. Once a command prompt window opens, type `python` and press Enter. Python is not installed if you receive a message like
 ```
 Python is not recognized as an internal or external command, operable program or batch file.
 ```
