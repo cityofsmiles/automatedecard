@@ -16,17 +16,17 @@ import os
 import ecardFirst2021
 
 
-pathCards = "2nd-grading-cards"
+pathCards = "3rd-grading-cards"
 infosExcel = "ecard-infos.xlsx"
 cardTemplate = "ecard-template.xlsx"
-infosSheets = ["Infos-Card-Male", "Infos-Card-Female", "1st-Summary-Male", "1st-Summary-Female", "2nd-Summary-Male", "2nd-Summary-Female"]
+infosSheets = ["Infos-Card-Male", "Infos-Card-Female", "1st-Summary-Male", "1st-Summary-Female", "2nd-Summary-Male", "2nd-Summary-Female", "3rd-Summary-Male", "3rd-Summary-Female"]
 
 
 # always keep same length
-selectedEndCol = [12, 21, 21]
-pasteStartRow = [2, 2, 3]
-templateSheets = ["Infos", "Grades", "Grades"]
-pasteSheet = ["infoSheet", "gradeSheet", "gradeSheet"]
+selectedEndCol = [12, 21, 21, 21]
+pasteStartRow = [2, 2, 3, 4]
+templateSheets = ["Infos", "Grades", "Grades", "Grades"]
+pasteSheet = ["infoSheet", "gradeSheet", "gradeSheet", "gradeSheet"]
 
 
 if __name__ == '__main__':
