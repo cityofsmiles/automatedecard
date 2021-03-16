@@ -1,5 +1,5 @@
 # Automated E-Card for High School Teachers
-These are simple Python scripts for producing high school report cards.
+This is a simple Python script for producing high school report cards.
 
 ## Installation
 1. In Windows 10, launch the Microsoft Store and install Python. As of this writing, the latest available version is Python 3.9. To install in any Android smartphone, launch the Google Play Store to install the F-Droid app. Then launch the F-Droid app to install the Termux app. In the Termux app, install Python. Click [here](https://itrendbuzz.com/install-python-on-android-using-termux/) for a tutorial on Termux.

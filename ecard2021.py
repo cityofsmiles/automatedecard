@@ -38,11 +38,6 @@ def loadSheets(infosExcel):
 
 def makeCard(pathCards, sheetsCard, cardTemplate, selectedEndCol, pasteStartRow, templateSheets):
     os.makedirs(pathCards, exist_ok=True)
-    wb = openpyxl.load_workbook(infosExcel, data_only=True)
-    #if len(selectedEndCol) == 8:
-     #   addSheetNum = [0, 2, 4, 6, 8, 10, 12, 12]
-    #else:
-     #   addSheetNum = [*range(0, len(wb.sheetnames) - 2, 2)]
     addSheetNum = [0, 2, 4, 6, 8, 10, 12, 12]
     pasteSheet = []
     for i in range(0, 2):
