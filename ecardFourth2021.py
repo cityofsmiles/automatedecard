@@ -19,17 +19,15 @@ import ecardFirst2021
 pathCards = "4th-grading-cards"
 infosExcel = "ecard-infos.xlsx"
 cardTemplate = "ecard-template.xlsx"
-infosSheets = ["Infos-Card-Male", "Infos-Card-Female", "1st-Summary-Male", "1st-Summary-Female", "2nd-Summary-Male", "2nd-Summary-Female", "3rd-Summary-Male", "3rd-Summary-Female", "4th-Summary-Male", "4th-Summary-Female"]
 
 
 # always keep same length
 selectedEndCol = [12, 21, 21, 21, 21]
 pasteStartRow = [2, 2, 3, 4, 5]
 templateSheets = ["Infos", "Grades", "Grades", "Grades", "Grades"]
-pasteSheet = ["infoSheet", "gradeSheet", "gradeSheet", "gradeSheet", "gradeSheet"]
 
 
 if __name__ == '__main__':
-    sheetsCard = ecardFirst2021.loadSheets(infosExcel, infosSheets)
-    ecardFirst2021.makeCard(pathCards, sheetsCard, cardTemplate, infosSheets, selectedEndCol, pasteStartRow, templateSheets, pasteSheet)
+    sheetsCard = ecardFirst2021.loadSheets(infosExcel)
+    ecardFirst2021.makeCard(pathCards, sheetsCard, cardTemplate, selectedEndCol, pasteStartRow, templateSheets)
     print("Done!")

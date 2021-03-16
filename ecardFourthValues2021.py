@@ -16,15 +16,15 @@ import os
 import ecardFirst2021
 
 
-pathCards = "2nd-grading-cards"
+pathCards = "4th-grading-cards"
 infosExcel = "ecard-infos.xlsx"
 cardTemplate = "ecard-template.xlsx"
 
 
 # always keep same length
-selectedEndCol = [12, 21, 21]
-pasteStartRow = [2, 2, 3]
-templateSheets = ["Infos", "Grades", "Grades"]
+selectedEndCol = [11, 14, 14, 14, 14, 31]
+pasteStartRow = [2, 2, 3, 4, 5, 2]
+templateSheets = ["Infos", "Grades", "Grades", "Grades", "Grades", "Values"]
 
 
 if __name__ == '__main__':

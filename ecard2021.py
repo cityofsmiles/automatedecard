@@ -15,14 +15,15 @@ import openpyxl
 import os
 
 
-pathCards = "1st-grading-cards"
+pathCards = "Cards"
 infosExcel = "ecard-infos.xlsx"
 cardTemplate = "ecard-template.xlsx"
 
+
 # always keep same length
-selectedEndCol = [11, 14]
-pasteStartRow = [2, 2]
-templateSheets = ["Infos", "Grades"]
+selectedEndCol = [11, 14, 14, 14, 14, 31, 12, 12]
+pasteStartRow = [2, 2, 3, 4, 5, 2, 1, 3]
+templateSheets = ["Infos", "Grades", "Grades", "Grades", "Grades", "Values", "Attendance", "Attendance"]
 
 
 def loadSheets(infosExcel):
@@ -38,10 +39,11 @@ def loadSheets(infosExcel):
 def makeCard(pathCards, sheetsCard, cardTemplate, selectedEndCol, pasteStartRow, templateSheets):
     os.makedirs(pathCards, exist_ok=True)
     wb = openpyxl.load_workbook(infosExcel, data_only=True)
-    if len(selectedEndCol) == 8:
-        addSheetNum = [0, 2, 4, 6, 8, 10, 12, 12]
-    else:
-        addSheetNum = [*range(0, len(wb.sheetnames) - 2, 2)]
+    #if len(selectedEndCol) == 8:
+     #   addSheetNum = [0, 2, 4, 6, 8, 10, 12, 12]
+    #else:
+     #   addSheetNum = [*range(0, len(wb.sheetnames) - 2, 2)]
+    addSheetNum = [0, 2, 4, 6, 8, 10, 12, 12]
     pasteSheet = []
     for i in range(0, 2):
         for k in range(0, sheetsCard[i].max_row):
