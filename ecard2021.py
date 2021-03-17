@@ -20,12 +20,6 @@ infosExcel = "ecard-infos.xlsx"
 cardTemplate = "ecard-template.xlsx"
 
 
-# always keep same length
-selectedEndCol = [11, 14, 14, 14, 14, 31, 12, 12]
-pasteStartRow = [2, 2, 3, 4, 5, 2, 1, 3]
-templateSheets = ["Infos", "Grades", "Grades", "Grades", "Grades", "Values", "Attendance", "Attendance"]
-
-
 def loadSheets(infosExcel):
     sheetsCard = []
     print("Loading", infosExcel)
@@ -36,9 +30,12 @@ def loadSheets(infosExcel):
     return sheetsCard
 
 
-def makeCard(pathCards, sheetsCard, cardTemplate, selectedEndCol, pasteStartRow, templateSheets):
+def makeCard(pathCards, sheetsCard, cardTemplate):
     os.makedirs(pathCards, exist_ok=True)
     addSheetNum = [0, 2, 4, 6, 8, 10, 12, 12]
+    selectedEndCol = [11, 14, 14, 14, 14, 31, 12, 12]
+    pasteStartRow = [2, 2, 3, 4, 5, 2, 1, 3]
+    templateSheets = ["Infos", "Grades", "Grades", "Grades", "Grades", "Values", "Attendance", "Attendance"]
     pasteSheet = []
     for i in range(0, 2):
         for k in range(0, sheetsCard[i].max_row):
@@ -95,5 +92,5 @@ def pasteRange(startCol, startRow, endCol, endRow, sheetReceiving, copiedData):
 
 if __name__ == '__main__':
     sheetsCard = loadSheets(infosExcel)
-    makeCard(pathCards, sheetsCard, cardTemplate, selectedEndCol, pasteStartRow, templateSheets)
+    makeCard(pathCards, sheetsCard, cardTemplate)
     print("Done!")
