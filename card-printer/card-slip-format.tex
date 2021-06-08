@@ -1,0 +1,150 @@
+\documentclass[twocolumn,9pt]{article}
+\usepackage[legalpaper,right=0.5in, left=0.3in, top=0.5in, bottom=1.5in]{geometry}
+\usepackage[pdftex]{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{floatrow} 
+\usepackage{array}
+\usepackage{ifthen}
+\usepackage{multirow}
+
+%\renewcommand\arraystretch{2.4} \setlength\minrowclearance{12.4pt}
+\pagenumbering{gobble}
+%\DeclareFloatFont{small}{\small}
+%\floatsetup[table]{font=small} 
+\DeclareFloatFont{footnotesize}{\footnotesize}
+\floatsetup[table]{font=footnotesize} 
+\setlength\tabcolsep{1pt}
+\newcolumntype{C}{>{\centering\arraybackslash}m}
+\newcolumntype{L}{>{\raggedright\arraybackslash}m}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}m}
+
+\begin{document}
+\renewcommand\arraystretch{0.9}
+
+\begin{tabular}{L{67pt}  L{153pt}  R{40pt} } 
+Name: & \multicolumn{2}{c}{\hspace*{-3em}\textbf{\small stname}}\\[0pt] 
+Grade/Section: & \hspace*{1.5em}stgrade -- stsection  & stcode \\[-2pt] 
+\end{tabular} 
+
+\par\vskip0.5pt
+
+\begin{tabular}{|L{90pt} | C{18.5pt} | C{18.5pt} | C{18.5pt} | C{18.5pt} | C{36pt} | C{50pt} |} 
+\hline 
+\multirow{2}[1]{90pt}{\vspace*{1sp} \textbf{\footnotesize LEARNING AREA}} & \multicolumn{4}{c|}{\textbf{\footnotesize QUARTER}} & \multirow{2}[1]{36pt}{\vspace*{-1pt} \footnotesize{\textbf{FINAL}} \newline \textbf{\footnotesize GRADE}} & \multirow{2}[1]{50pt}{\footnotesize \textbf{REMARKS}}\\
+\cline{2-5} %[11.5pt] 
+
+%\hspace*{4em} 
+& 1 & 2 & 3 & 4 & & \\%[6pt]
+\hline
+%\hspace*{4em} 
+Filipino & \ifthenelse{\equal{\firstg}{y}}{fil1}{\empty} &
+\ifthenelse{\equal{\secondg}{y}}{fil2}{\empty} &
+\ifthenelse{\equal{\thirdg}{y}}{fil3}{\empty} &
+\ifthenelse{\equal{\fourthg}{y}}{fil4}{\empty} &
+\ifthenelse{\equal{\finalg}{y}}{fil5}{\empty} &
+\ifthenelse{\equal{\finalg}{y}}{filr}{\empty} \\%[6pt] 
+\hline
+%\hspace*{7em} 
+English & \ifthenelse{\equal{\firstg}{y}}{eng1}{\empty} &
+\ifthenelse{\equal{\secondg}{y}}{eng2}{\empty} &
+\ifthenelse{\equal{\thirdg}{y}}{eng3}{\empty} &
+\ifthenelse{\equal{\fourthg}{y}}{eng4}{\empty} &
+\ifthenelse{\equal{\finalg}{y}}{eng5}{\empty} &
+\ifthenelse{\equal{\finalg}{y}}{engr}{\empty} \\%[6pt] 
+\hline
+%\hspace*{4em} 
+Mathematics & \ifthenelse{\equal{\firstg}{y}}{math1}{\empty} &
+\ifthenelse{\equal{\secondg}{y}}{math2}{\empty} &
+\ifthenelse{\equal{\thirdg}{y}}{math3}{\empty} &
+\ifthenelse{\equal{\fourthg}{y}}{math4}{\empty} &
+\ifthenelse{\equal{\finalg}{y}}{math5}{\empty} &
+\ifthenelse{\equal{\finalg}{y}}{mathr}{\empty} \\%[6pt] 
+\hline
+%\hspace*{10.4em} 
+Science & \ifthenelse{\equal{\firstg}{y}}{sci1}{\empty} &
+\ifthenelse{\equal{\secondg}{y}}{sci2}{\empty} &
+\ifthenelse{\equal{\thirdg}{y}}{sci3}{\empty} &
+\ifthenelse{\equal{\fourthg}{y}}{sci4}{\empty} &
+\ifthenelse{\equal{\finalg}{y}}{sci5}{\empty} &
+\ifthenelse{\equal{\finalg}{y}}{scir}{\empty} \\%[6pt] 
+\hline
+%\vspace*{12pt}
+%\hspace*{2em} 
+Araling Panlipunan & \ifthenelse{\equal{\firstg}{y}}{ap1}{\empty} &
+\ifthenelse{\equal{\secondg}{y}}{ap2}{\empty} &
+\ifthenelse{\equal{\thirdg}{y}}{ap3}{\empty} &
+\ifthenelse{\equal{\fourthg}{y}}{ap4}{\empty} &
+\ifthenelse{\equal{\finalg}{y}}{ap5}{\empty} &
+\ifthenelse{\equal{\finalg}{y}}{apr}{\empty} \\%[10.5pt] 
+\hline
+%\vspace*{12pt}
+%\hspace*{5.5em} 
+EsP & \ifthenelse{\equal{\firstg}{y}}{esp1}{\empty} &
+\ifthenelse{\equal{\secondg}{y}}{esp2}{\empty} &
+\ifthenelse{\equal{\thirdg}{y}}{esp3}{\empty} &
+\ifthenelse{\equal{\fourthg}{y}}{esp4}{\empty} &
+\ifthenelse{\equal{\finalg}{y}}{esp5}{\empty} &
+\ifthenelse{\equal{\finalg}{y}}{espr}{\empty} \\%[10.5pt] 
+\hline
+%\hspace*{4em} 
+TLE & \ifthenelse{\equal{\firstg}{y}}{tle1}{\empty} &
+\ifthenelse{\equal{\secondg}{y}}{tle2}{\empty} &
+\ifthenelse{\equal{\thirdg}{y}}{tle3}{\empty} &
+\ifthenelse{\equal{\fourthg}{y}}{tle4}{\empty} &
+\ifthenelse{\equal{\finalg}{y}}{tle5}{\empty} & 
+\ifthenelse{\equal{\finalg}{y}}{tler}{\empty} \\%[9.5pt] 
+\hline
+%\hspace*{4em} 
+MAPEH & \ifthenelse{\equal{\firstg}{y}}{mapeh1}{\empty} &
+\ifthenelse{\equal{\secondg}{y}}{mapeh2}{\empty} &
+\ifthenelse{\equal{\thirdg}{y}}{mapeh3}{\empty} &
+\ifthenelse{\equal{\fourthg}{y}}{mapeh4}{\empty} &
+\ifthenelse{\equal{\finalg}{y}}{mapeh5}{\empty} &
+\ifthenelse{\equal{\finalg}{y}}{mapehr}{\empty} \\%[6pt] 
+\hline
+\hspace*{1em} 
+Music & \ifthenelse{\equal{\firstg}{y}}{music1}{\empty} &
+\ifthenelse{\equal{\secondg}{y}}{music2}{\empty} &
+\ifthenelse{\equal{\thirdg}{y}}{music3}{\empty} &
+\ifthenelse{\equal{\fourthg}{y}}{music4}{\empty} &
+\ifthenelse{\equal{\finalg}{y}}{music5}{\empty} & 
+\ifthenelse{\equal{\finalg}{y}}{musicr}{\empty} \\%[6pt] 
+\hline
+\hspace*{1em} 
+Arts & \ifthenelse{\equal{\firstg}{y}}{arts1}{\empty} &
+\ifthenelse{\equal{\secondg}{y}}{arts2}{\empty} &
+\ifthenelse{\equal{\thirdg}{y}}{arts3}{\empty} &
+\ifthenelse{\equal{\fourthg}{y}}{arts4}{\empty} &
+\ifthenelse{\equal{\finalg}{y}}{arts5}{\empty} &
+\ifthenelse{\equal{\finalg}{y}}{artsr}{\empty} \\%[6pt] 
+\hline
+\hspace*{1em} 
+PE & \ifthenelse{\equal{\firstg}{y}}{pe1}{\empty} &
+\ifthenelse{\equal{\secondg}{y}}{pe2}{\empty} &
+\ifthenelse{\equal{\thirdg}{y}}{pe3}{\empty} &
+\ifthenelse{\equal{\fourthg}{y}}{pe4}{\empty} &
+\ifthenelse{\equal{\finalg}{y}}{pe5}{\empty} &
+\ifthenelse{\equal{\finalg}{y}}{per}{\empty} \\%[6pt] 
+\hline
+\hspace*{1em} 
+Health & \ifthenelse{\equal{\firstg}{y}}{health1}{\empty}  &
+\ifthenelse{\equal{\secondg}{y}}{health2}{\empty} &
+\ifthenelse{\equal{\thirdg}{y}}{health3}{\empty} &
+\ifthenelse{\equal{\fourthg}{y}}{health4}{\empty} &
+\ifthenelse{\equal{\finalg}{y}}{health5}{\empty} &
+\ifthenelse{\equal{\finalg}{y}}{healthr}{\empty} \\%[6pt] 
+\hline
+\hspace*{2mm} 
+ &  & & & & & \\%[6pt] 
+\hline
+\hspace*{4em} 
+ &\multicolumn{4}{c|}{Gen. Ave.} & \ifthenelse{\equal{\finalg}{y}}{avegrade}{\empty} & \\%[6pt] 
+\hline
+\end{tabular} 
+
+\par\vskip14pt%\par\vskip15pt
+
+
+
+
+

@@ -17,7 +17,7 @@ import os
 
 pathCards = "Cards"
 infosExcel = "ecard-infos.xlsx"
-cardTemplate = "ecard-template.xlsx"
+cardTemplate = "ecard-template-with-ldm.xlsx"
 
 
 def loadSheets(infosExcel):
@@ -63,7 +63,7 @@ def makeCard(pathCards, sheetsCard, cardTemplate):
                 selectedRow = copyRange(1, studentRow, selectedEndCol[j], studentRow, sheetsCard[i + addSheetNum[j]]) 
                 pasteRow = pasteRange(1, pasteStartRow[j], selectedEndCol[j], pasteStartRow[j], pasteSheet[j], selectedRow)
             template.save(os.path.join(pathCards,fileName))
-    print("The outputs are in the folder:", pathCards)
+    print("The outputs are in the", pathCards, "folder.")
     
 
 def copyRange(startCol, startRow, endCol, endRow, sheet):
