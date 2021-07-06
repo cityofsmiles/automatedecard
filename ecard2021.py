@@ -3,6 +3,7 @@
 import sys
 import subprocess
 import importlib.util
+import argparse
 
 packages = ['openpyxl']
 for package_name in packages:
@@ -15,9 +16,35 @@ import openpyxl
 import os
 
 
-pathCards = "Cards"
-infosExcel = "ecard-infos.xlsx"
+#pathCards = "Cards"
+#infosExcel = "ecard-infos.xlsx"
 cardTemplate = "ecard-template-with-ldm.xlsx"
+
+def parseArguments():
+    # Create argument parser
+    parser = argparse.ArgumentParser()
+
+    # Positional mandatory arguments
+    #parser.add_argument("inputPdf", help="Filename of the input PDF.", type=str)
+
+    # Optional arguments
+    parser.add_argument("-i", "--inputFile", help="Input filename.", type=str, default='ecard-infos.xlsx')
+    parser.add_argument("-o", "--outDir", help="Output directory name.", type=str, default='Cards')
+
+    # Print version
+    parser.add_argument("-v", "--version", action="version", version='%(prog)s - Version 1.0')
+
+    # Parse arguments
+    args = parser.parse_args()
+    return args
+
+
+def try_file(inputfile):
+    try:
+        f = open(inputfile)
+    except FileNotFoundError:
+        print("File not found. Exiting.")
+        sys.exit(1)
 
 
 def loadSheets(infosExcel):
@@ -91,6 +118,8 @@ def pasteRange(startCol, startRow, endCol, endRow, sheetReceiving, copiedData):
 
 
 if __name__ == '__main__':
-    sheetsCard = loadSheets(infosExcel)
-    makeCard(pathCards, sheetsCard, cardTemplate)
+    args = parseArguments()
+    try_file(args.inputFile)
+    sheetsCard = loadSheets(args.inputFile)
+    makeCard(args.outDir, sheetsCard, cardTemplate)
     print("Done!")

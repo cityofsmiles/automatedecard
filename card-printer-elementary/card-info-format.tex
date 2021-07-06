@@ -1,0 +1,54 @@
+% cd /host-rootfs/storage/emulated/0/Documents/documents/latex/bheng/ && pdflatex card-bheng.tex
+
+\documentclass{article}
+%\usepackage[letterpaper, landscape, paperheight=282mm, paperwidth=215mm, right=12mm,  left=0.5cm, top=42mm, bottom=0.5cm]{geometry} %for long card
+\usepackage[letterpaper, landscape, paperheight=282mm, paperwidth=215mm, right=10mm, left=0.5cm, top=42mm, bottom=0.5cm]{geometry} %for short card
+\usepackage[usenames, dvipsnames]{xcolor} 
+\usepackage{anyfontsize}
+\usepackage{enumitem}
+\usepackage{multicol}
+%\usepackage{amsmath}
+\usepackage{tabularx} 
+
+\pagenumbering{gobble}
+\newcommand{\fontcolor}{black}
+
+
+\begin{document}
+
+\color{\fontcolor}
+{\fontsize{11}{12}\fontfamily{pnc}\selectfont {
+
+\begin{multicols}{2}
+
+\phantom{u}
+
+\columnbreak
+
+\vspace*{-3mm}
+\begin{center}
+\phantom{school year:} \hspace*{6em} stschoolyear 
+\end{center} 
+
+\vspace{4mm} 
+
+\phantom{Name:} \hspace*{5em} stname \\[2.5mm] %
+
+\phantom{Age} \hspace*{8em} stage  \phantom{Sex} \hspace*{12em} stgender \\[2.5mm] %
+
+\phantom{Grade} \hspace*{3em} stgrade \phantom{Section} \hspace*{4em} stsection \phantom{LRN} \hspace*{4em} stlrn \\
+
+\vspace*{25mm}
+
+\begin{flushright}
+stadviser \hspace*{-1.5em}
+\end{flushright}  
+\vspace*{1.5mm}
+\hspace*{3em} stprincipal
+
+
+\end{multicols} 
+\newpage
+
+}}
+\end{document}
